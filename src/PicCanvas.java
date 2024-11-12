@@ -56,10 +56,9 @@ public class PicCanvas extends Canvas {
 			bImage = resizeImage(bImage, PIC_WIDTH, PIC_HEIGHT);
 			g.drawImage(bImage, x_offset,y_offset,this);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}  
+	}
 	
 	BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) throws IOException {
 		//System.out.println("resizing image");
