@@ -1,20 +1,19 @@
 import java.awt.Color;
 import java.awt.Font;
 
+
 /**
  * Choose-Your-Own-Adventure Lab
  * Read instructions for more details.
  * See the (#) indicating which Milestone each part of code needs to be completed by.
  * @author _____________________ (2)
  * @version ____________________ (2)
- * Starter Code Date: 11/11/2024
+ * Starter Code Date: 11/12/2024
  */
-
 public class Main {
 
 	//declare a new Adventure
 	public static Adventure a;
-
 
 	public static void main(String[] args) {
 

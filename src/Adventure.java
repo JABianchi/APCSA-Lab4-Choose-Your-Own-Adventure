@@ -7,7 +7,7 @@ import java.awt.*;
  * Designed for usage after Unit 4 of the AP Computer Science A curriculum
  * Topics to emphasize include: String methods, if-else structures, using Java methods with parameters & returns, loops
  * @author Joel Bianchi
- * @version 11/11/2024
+ * @version 11/12/2024
  * Latest Update: Javadocs added
  */
 public class Adventure{
@@ -293,20 +293,21 @@ public class Adventure{
 	}
 
 	/**
-	 * Changes the font style of the Description box
-	 * @param fontStyles Can use "serif", "sans-serif", or "courier"
-	 */
-	public void setDescriptionTextFont(String fontStyle){
-		descriptionTextFont = fontStyle.toLowerCase();
-	}
-
-	/**
 	 * Changes the color of the background of the Description box
 	 * @param descriptionColor the desired color from Java's Color class 
 	 * 				(ie. <code>Color.BLUE</code> or <code>new Color(255,0,0)</code>)
 	 */
 	public void setDescriptionColor(Color descriptionColor){
 		topDescription.setBackground(descriptionColor);
+	}
+	
+	/**
+	 * Changes the size of the text in the Description
+	 * @param descriptionTextSize font size for description text (ie. 15)
+	 */
+	public void setDescriptionTextSize(int descriptionTextSize){
+		this.descriptionTextSize = descriptionTextSize;
+		printDescription(descriptionText);
 	}
 
 	/**
@@ -319,17 +320,55 @@ public class Adventure{
 	}
 
 	/**
-	 * Changes the size of the text in the Description
-	 * @param descriptionTextSize font size for description text (ie. 15)
+	 * Changes the font style of the Description box
+	 * @param fontStyles Can use "serif", "sans-serif", or "courier"
 	 */
-	public void setDescriptionTextSize(int descriptionTextSize){
-		this.descriptionTextSize = descriptionTextSize;
-		printDescription(descriptionText);
+	public void setDescriptionTextFont(String fontStyle){
+		descriptionTextFont = fontStyle.toLowerCase();
+	}
+
+	/**
+	 * Changes the text wording on a specific button
+	 * @param buttonName Use "LEFT", "RIGHT", "LEFT2" or "RIGHT2"
+	 * @param newText the text to display on the button
+	 */
+	public void setButtonText(String buttonName, String newText){
+		AdventureButton sb = getButton(buttonName);
+		if(sb != null){
+			sb.setButtonText(newText);
+		}
+	}
+	
+	/**
+	 * Changes the background color filled in for a specific button
+	 * @param buttonName Use "LEFT", "RIGHT", "LEFT2" or "RIGHT2"
+	 * @param color the desired color from Java's Color class 
+	 * 				(ie. <code>Color.BLACK</code> or <code>new Color(255,0,0)</code>)
+	 */
+	public void setButtonColor(String buttonName, Color color){
+		AdventureButton sb = getButton(buttonName);
+		if(sb != null){
+			sb.setBackground(color);
+		}
+	}
+	
+	/**
+	 * Changes the background color filled in for ALL buttons
+	 * @param color the desired color from Java's Color class 
+	 * 				(ie. <code>Color.BLACK</code> or <code>new Color(255,0,0)</code>)
+	 */
+	public void setButtonColor(Color color){
+		setButtonColor("left", color);
+		setButtonColor("right", color);
+		if(numButtons == 4){
+			setButtonColor("left2", color);
+			setButtonColor("right2", color);	
+		}
 	}
 
 	/**
 	 * Changes the shape of a specific Button
-	 * @param buttonName Use "right", "left", "right2" or "left2"
+	 * @param buttonName Use "LEFT", "RIGHT", "LEFT2" or "RIGHT2"
 	 * @param shapeNum Determines the shape of the button:
 	 * 1 = Circle, 
 	 * 2 = UpTriangle, 
@@ -364,7 +403,7 @@ public class Adventure{
 
 	/**
 	 * Changes the size dimensions for a specific button
-	 * @param buttonName Use "right", "left", "right2" or "left2"
+	 * @param buttonName Use "LEFT", "RIGHT", "LEFT2" or "RIGHT2"
 	 * @param widthPixels maximum width of the button
 	 * 					(Panel will automatically adjust, 
 	 * 					but button will only expand to max width if needed.)
@@ -392,49 +431,10 @@ public class Adventure{
 			setButtonSize("right2", widthPixels, heightPixels);
 		}
 	}
-	
-	/**
-	 * Changes the text wording on a specific button
-	 * @param buttonName Use "right", "left", "right2" or "left2"
-	 * @param newText the text to display on the button
-	 */
-	public void setButtonText(String buttonName, String newText){
-		AdventureButton sb = getButton(buttonName);
-		if(sb != null){
-			sb.setButtonText(newText);
-		}
-	}
-
-	/**
-	 * Changes the background color filled in for a specific button
-	 * @param buttonName Use "right", "left", "right2" or "left2"
-	 * @param color the desired color from Java's Color class 
-	 * 				(ie. <code>Color.BLACK</code> or <code>new Color(255,0,0)</code>)
-	 */
-	public void setButtonColor(String buttonName, Color color){
-		AdventureButton sb = getButton(buttonName);
-		if(sb != null){
-			sb.setBackground(color);
-		}
-	}
-	
-	/**
-	 * Changes the background color filled in for ALL buttons
-	 * @param color the desired color from Java's Color class 
-	 * 				(ie. <code>Color.BLACK</code> or <code>new Color(255,0,0)</code>)
-	 */
-	public void setButtonColor(Color color){
-		setButtonColor("left", color);
-		setButtonColor("right", color);
-		if(numButtons == 4){
-			setButtonColor("left2", color);
-			setButtonColor("right2", color);	
-		}
-	}
 
 	/**
 	 * Changes the font style for a specific button
-	 * @param buttonName Use "right", "left", "right2" or "left2"
+	 * @param buttonName Use "LEFT", "RIGHT", "LEFT2" or "RIGHT2"
 	 * @param font the desired front from the Java Font class 
 	 * 				https://docs.oracle.com/javase/7/docs/api/java/awt/Font.html
 	 * 				(ie. <code>new Font("Arial", Font.PLAIN, 25)</code>)
@@ -463,7 +463,7 @@ public class Adventure{
 
 	/**
 	 * Changes the text color for a specific button
-	 * @param buttonName Use "right", "left", "right2" or "left2"
+	 * @param buttonName Use "LEFT", "RIGHT", "LEFT2" or "RIGHT2"
 	 * @param textColor the desired color from Java's Color class 
 	 * 				(ie. <code>Color.BLACK</code> or <code>new Color(255,0,0)</code>)
 	 */

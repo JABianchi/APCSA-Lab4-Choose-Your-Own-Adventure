@@ -6,7 +6,7 @@ import javax.imageio.ImageIO;
 /**
  * Class to display resized pictures in a JFrame
  * @author Joel Bianchi
- * @version 12/11/2020
+ * @version 11/12/2024
  */
 public class PicCanvas extends Canvas {
 
@@ -43,15 +43,15 @@ public class PicCanvas extends Canvas {
 	}
 
 	public void changePic(String imgPath) {
-		//this.imgPath = "/" + imgPath; //PickCode version
-		this.imgPath = imgPath; //VSCode version
+		this.imgPath = imgPath;
 		repaint();
 	}
 
 	public void paint(Graphics g) {
-		//System.out.println("pic painting...");
 		try {
-			BufferedImage bImage = ImageIO.read(new File(imgPath));
+            // System.out.println("paint... " + imgPath);
+            // BufferedImage bImage = ImageIO.read(new File("./starter-code/" + imgPath)); //PickCode ADMIN version
+            BufferedImage bImage = ImageIO.read(new File(imgPath)); //student version
 			bImage = resizeImage(bImage, PIC_WIDTH, PIC_HEIGHT);
 			g.drawImage(bImage, x_offset,y_offset,this);
 		} catch (IOException e) {

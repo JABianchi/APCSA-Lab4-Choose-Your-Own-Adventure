@@ -7,12 +7,12 @@ import java.awt.geom.*;
  * Builds off of JButtons, adding Cirucular and Polygonal shaped buttons
  * Remix from harryjoy's 8/21/2011 code: https://harryjoy.me/2011/08/21/different-button-shapes-in-swing/
  * @author Joel Bianchi
- * @version 11/11/2024
+ * @version 11/12/2024
  */
 public class AdventureButton extends JButton {
 
 	Shape shape;
-	int shapeType;					//1 = circle, 2 = triangleUp, 3 = triangleLeft, 4 = triangleRight, 5 = Rectangle
+	int shapeType;	//1 = circle, 2 = triangleUp, 3 = triangleLeft, 4 = triangleRight, 5 = Rectangle
 	Polygon polygon;
 	int[] xPoints;
 	int[] yPoints;
