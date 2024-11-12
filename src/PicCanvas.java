@@ -8,7 +8,6 @@ import javax.imageio.ImageIO;
  * @author Joel Bianchi
  * @version 12/11/2020
  */
-
 public class PicCanvas extends Canvas {
 
 	private String imgPath;

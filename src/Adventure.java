@@ -1,25 +1,22 @@
 import javax.swing.*;
-import javax.swing.BoxLayout;
 import java.awt.event.*;
 import java.awt.*;
 
 /**
  * An Adventure class for students to create a Choose-Your-Own-Adventure Lab
  * Designed for usage after Unit 4 of the AP Computer Science A curriculum
+ * Topics to emphasize include: String methods, if-else structures, using Java methods with parameters & returns, loops
  * @author Joel Bianchi
  * @version 11/11/2024
- * Latest Update: simpler button adjustment methods
+ * Latest Update: Javadocs added
  */
-
-
 public class Adventure{
 
 	private int numButtons;
 	private String lastButtonPushed;
 	private int totalButtonPushes;
 
-	// private String leftButtonText = "LEFT BUTTON";
-	private String leftButtonText = printButtonTextHTML("Hi my name is Bob and I work in a chocolate factory");;
+	private String leftButtonText = "LEFT BUTTON";
 	private String rightButtonText = "RIGHT BUTTON";
 	private String leftButtonText2 = "LEFT2 BUTTON";
 	private String rightButtonText2 = "RIGHT2 BUTTON";
@@ -32,12 +29,12 @@ public class Adventure{
 	private JTextPane topDescription;
 
 	private JPanel leftPanel;
-	private ShapeButton leftButton;
-	private ShapeButton leftButton2;
+	private AdventureButton leftButton;
+	private AdventureButton leftButton2;
 	
 	private JPanel rightPanel;
-	private ShapeButton rightButton;
-	private ShapeButton rightButton2;
+	private AdventureButton rightButton;
+	private AdventureButton rightButton2;
 	
 	private JPanel centerPanel;
 	private PicCanvas bgImage;
@@ -56,12 +53,19 @@ public class Adventure{
 	/*----- ADVENTURE SCREEN CONSTRUCTORS -------------------*/
 	/*-------------------------------------------------------*/
 
-	//Default Constructor
+	/**
+	 * Adventure Class Constructor #1: Default
+	 */
 	public Adventure(){
 		this(800, 600, 2);
 	}
 
-	//Constructor that allows a change to the Adventure screen dimensions
+	/**
+	 * Adventure Class Constructor #2: 
+	 * @param widthPixels how many pixels wide (x-axis) the screen should be
+	 * @param heightPixels how many pixels high (y-axis) the screen should be
+	 * @param numButtons choose 2 or 4 buttons for the Adventure
+	 */
 	public Adventure(int widthPixels, int heightPixels, int numButtons){
 
 		this.numButtons = numButtons;
@@ -104,25 +108,25 @@ public class Adventure{
 
 		leftPanel = new JPanel();
 		leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
-		leftButton = new ShapeButton(leftButtonText, 1, bWidth, bHeight);
+		leftButton = new AdventureButton(leftButtonText, 1, bWidth, bHeight);
 		leftButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		leftButton.setAlignmentY(Component.CENTER_ALIGNMENT);
 		leftPanel.add(leftButton);
 
 		rightPanel = new JPanel();
 		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
-		rightButton = new ShapeButton(rightButtonText, 1, bWidth, bHeight);
+		rightButton = new AdventureButton(rightButtonText, 1, bWidth, bHeight);
 		rightButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		rightButton.setAlignmentY(Component.CENTER_ALIGNMENT);
 		rightPanel.add(rightButton);
 
 		if(numButtons == 4){
-			leftButton2 = new ShapeButton(leftButtonText2, 1, bWidth, bHeight);
+			leftButton2 = new AdventureButton(leftButtonText2, 1, bWidth, bHeight);
 			leftButton2.setAlignmentX(Component.CENTER_ALIGNMENT);
 			leftButton2.setAlignmentY(Component.CENTER_ALIGNMENT);
 			leftPanel.add(leftButton2);
 
-			rightButton2 = new ShapeButton(rightButtonText2, 1, bWidth, bHeight);
+			rightButton2 = new AdventureButton(rightButtonText2, 1, bWidth, bHeight);
 			rightButton2.setAlignmentX(Component.CENTER_ALIGNMENT);
 			rightButton2.setAlignmentY(Component.CENTER_ALIGNMENT);
 			rightPanel.add(rightButton2);
@@ -191,61 +195,84 @@ public class Adventure{
 	/*----- METHODS THAT GIVE ACCESS TO ADVENTURE INFO ------*/
 	/*-------------------------------------------------------*/
 	
-	//Tells you which was the last Button pushed as a String
-	// returns "RIGHT", "LEFT", or "NONE"
-	// Use the resetLastButtonPushed method to reset this value
+	/**
+	 * Tells you which was the last Button pushed as a String
+	 * Use the resetLastButtonPushed() method to reset this value
+	 * @return "LEFT", "RIGHT", "LEFT2", "RIGHT2", or "NONE"
+	 * 			(Note: This does NOT return the Button Text you added!)
+	 */
 	public String getLastButtonPushed(){
 		return lastButtonPushed;
 	}
 
-	//Reset the lastButtonPushed
-	public void resetLastButtonPushed(){
-		lastButtonPushed = "NONE";
-	}
-
-	//Returns the int for the Total Button pushes
+	/**
+	 * Keeps track of button clicks throughout Adventure
+	 * @return int for total button pushes
+	 */
 	public int getTotalButtonPushes(){
 		return this.totalButtonPushes;
 	}
 
-	//Resets all the Button Pushes back to zero
+	/**
+	 * Resets all the Button Pushes back to zero
+	 */
 	public void resetTotalButtonPushes(){
 		this.totalButtonPushes = 0;
 	}
+
 
 	/*-------------------------------------------------------*/
 	/*----- ADVENTURE VISUALIZATION METHODS -----------------*/
 	/*-------------------------------------------------------*/
 	
-	// Makes the Adventure window full screen
+	/**
+	 * Makes the Adventure window full screen
+	 */
 	void setFullscreen(){
 		f.setExtendedState(JFrame.MAXIMIZED_BOTH); //make the default window fullscreen
 		f.setVisible(true);
 	}
 
-	//Changes the central background picture for each Adventure Choice
+	/**
+	 * Changes the central background picture for each Adventure Choice
+	 * @param imgPath String for the path where image is located.
+	 * 				If stored in the images folder, use a forward slash
+	 * 				ie. "/images/forest.jpg"
+	 */
 	void setBackground(String imgPath){
 		bgImage.changePic(imgPath);	
 	}
 
-	//Sets the text in the Title Bar at the top of the Screen
+	/**
+	 * Sets Title bar text for Game Name, Author, and useful info
+	 * @param titleText the text in the Title Bar at top of Screen
+	 */
 	public void setTitleText(String titleText){
 		f.setTitle(titleText);
 	}
 
-	//Change the icon at the top of the Title Bar
+	/**
+	 * Changes the icon at the top of the Title Bar
+	 * @param iconPath String to path where icon is located.
+	 * 				If stored in the images folder, use a forward slash
+	 * 				ie. "/images/etech.ico"
+	 */
 	public void setTitleIcon(String iconPath){
 		ImageIcon icon = new ImageIcon(iconPath);
 		f.setIconImage(icon.getImage());
 	}
 
-	//Prints a new message in the Adventure Description rectangle
+	/**
+	 * Prints a new message in the Adventure Description rectangle at top of screen
+	 * @param newDescription String description to help user understandthe current Moment 
+	 * 						(Typically NOT listing the 2 or 4 choices here)  
+	 */
 	public void printDescription(String newDescription){
 		descriptionText = newDescription;
 		String html = "<html><p style=\"";
 
 		html += "color:";
-		html += getHTMLColorString(descriptionTextColor);
+		html += getHtmlColorString(descriptionTextColor);
 		html += ";";
 
 		html += "font:";
@@ -263,185 +290,69 @@ public class Adventure{
 
 		topDescription.setText(html);
 		//System.out.println(html);
-
 	}
 
-	private String getHTMLColorString(Color color) {
-		String red = Integer.toHexString(color.getRed());
-		String green = Integer.toHexString(color.getGreen());
-		String blue = Integer.toHexString(color.getBlue());
-
-		return "#" + 
-			(red.length() == 1? "0" + red : red) +
-			(green.length() == 1? "0" + green : green) +
-			(blue.length() == 1? "0" + blue : blue);	
-	}
-
-	//Changes the font style of the Description box
-	//The paramter fontStyles can be: "serif", "sans-serif", or "courier"
+	/**
+	 * Changes the font style of the Description box
+	 * @param fontStyles Can use "serif", "sans-serif", or "courier"
+	 */
 	public void setDescriptionTextFont(String fontStyle){
 		descriptionTextFont = fontStyle.toLowerCase();
 	}
 
-	//Changes the color of the background of the Description box
-	public void setDescriptionColor(Color c){
-		topDescription.setBackground(c);
+	/**
+	 * Changes the color of the background of the Description box
+	 * @param descriptionColor the desired color from Java's Color class 
+	 * 				(ie. <code>Color.BLUE</code> or <code>new Color(255,0,0)</code>)
+	 */
+	public void setDescriptionColor(Color descriptionColor){
+		topDescription.setBackground(descriptionColor);
 	}
 
-	//Change the color of the text in the Description
-	public void setDescriptionTextColor(Color c){
-		descriptionTextColor = c;
+	/**
+	 * Changes the color of the text in the Description box
+	 * @param descriptionTextColor the desired color from Java's Color class 
+	 * 				(ie. <code>Color.BLACK</code> or <code>new Color(255,0,0)</code>)
+	 */
+	public void setDescriptionTextColor(Color descriptionTextColor){
+		this.descriptionTextColor = descriptionTextColor;
 	}
 
-	// Changes the size of the text in the Description
-	public void setDescriptionTextSize(int size){
-		descriptionTextSize = size;
+	/**
+	 * Changes the size of the text in the Description
+	 * @param descriptionTextSize font size for description text (ie. 15)
+	 */
+	public void setDescriptionTextSize(int descriptionTextSize){
+		this.descriptionTextSize = descriptionTextSize;
 		printDescription(descriptionText);
 	}
 
-	//-----------BUTTON CUSTOMIZATION FUNCTIONS -------------//
-
-	//Prints an HTML message in a button
-	private String printButtonTextHTML(String buttonText){
-
-		String html = "<html><p style=\"";
-
-		// html += "color:";
-		// html += getHTMLColorString(descriptionTextColor);
-		// html += ";";
-
-		// html += "font:";
-		// html += descriptionTextSize + "px";
-		// html += ";";
-
-		// html += "font-family:";
-		// html += descriptionTextFont;
-		// html += ";";
-		
-		html += "text-align: center";
-		html += "\">";
-		html += buttonText;
-		html += "</p></html>";
-
-		return html;
-		//button.setText(html);
-		//System.out.println(html);
-
-	}
-
-
-	
-	// Change the wording of the buttons
-	// parameter buttonName: Use "right", "left", "right2" or "left2" for the button name
-	public void setButtonText(String buttonName, String newText){
-		if(buttonName.toLowerCase().equals("left")){
-			this.leftButtonText = newText;
-			this.leftButton.setText(this.leftButtonText);
-		}
-		else if(buttonName.toLowerCase().equals("right")){
-			this.rightButtonText = newText;
-			this.rightButton.setText(this.rightButtonText);
-		}
-		else if(buttonName.toLowerCase().equals("left2")){
-			this.leftButtonText2 = newText;
-			this.leftButton2.setText(this.leftButtonText2);
-		}
-		else if(buttonName.toLowerCase().equals("right2")){
-			this.rightButtonText2 = newText;
-			this.rightButton2.setText(this.rightButtonText2);
-		}
-		else{
-			System.out.println("Error with setButtonText() method!  Incorrect button name used --> " + buttonName + ".  Try \"left\", \"right\", \"left2\", or \"right2\".");
-		}
-	}
-
-	// Change the colors of the buttons
-	// parameter buttonName: Use "right", "left", "right2" or "left2" for the button name
-	public void setButtonColor(String buttonName, Color color){
-		if(buttonName.toLowerCase().equals("left")){
-			//this.leftButton.setOpaque(true);
-			this.leftButton.setBackground(color);
-		}
-		else if(buttonName.toLowerCase().equals("right")){
-			this.rightButton.setBackground(color);
-		}
-		else if(buttonName.toLowerCase().equals("left2")){
-			this.leftButton2.setBackground(color);
-		}
-		else if(buttonName.toLowerCase().equals("right2")){
-			this.rightButton2.setBackground(color);
-		}
-		else{
-			System.out.println("Error with setButtonColor() method!  Incorrect button name used --> " + buttonName + ".  Try \"left\", \"right\", \"left2\", or \"right2\".");
-		}
-	}
-	public void setButtonColor(Color color){
-		setButtonColor("left", color);
-		setButtonColor("right", color);
-		if(numButtons == 4){
-			setButtonColor("left2", color);
-			setButtonColor("right2", color);	
-		}
-	}
-	
-
-	//Change the fonts of the buttons
-	// parameter buttonName: Use "right", "left", "right2" or "left2" for the button name
-	//Check out the Java Font class to learn how to construct a Font:
-	// https://docs.oracle.com/javase/7/docs/api/java/awt/Font.html
-	public void setButtonFont(String buttonName, Font font){
-		if(buttonName.toLowerCase().equals("left")){
-			this.leftButton.setFont(font);
-		}
-		else if(buttonName.toLowerCase().equals("right")){
-			this.rightButton.setFont(font);
-		}
-		else if(buttonName.toLowerCase().equals("left2")){
-			this.leftButton2.setFont(font);
-		}
-		else if(buttonName.toLowerCase().equals("right2")){
-			this.rightButton2.setFont(font);
-		}
-		else{
-			System.out.println("Error with setButtonFont() method!  Incorrect button name used --> " + buttonName + ".  Try \"left\", \"right\", \"left2\", or \"right2\".");
-		}
-	}
-	public void setButtonFont(Font font){
-		setButtonFont("left", font);
-		setButtonFont("right", font);
-		if(numButtons == 4){
-			setButtonFont("left2", font);
-			setButtonFont("right2", font);
-		}
-	}
-
-	
-	// Change the shape of the Buttons
-	// parameter buttonName: Use "right", "left", "right2" or "left2" for the button name
-	// parameter shapeNum:
-	//	1 = Circle
-	//	2 = UpTriangle
-	//	3 = LeftTriangle
-	//	4 = RightTriangle
-	//	5 = Rectangle
-
+	/**
+	 * Changes the shape of a specific Button
+	 * @param buttonName Use "right", "left", "right2" or "left2"
+	 * @param shapeNum Determines the shape of the button:
+	 * 1 = Circle, 
+	 * 2 = UpTriangle, 
+	 * 3 = LeftTriangle, 
+	 * 4 = RightTriangle, 
+	 * 5 = Rectangle, 
+	 */
 	public void setButtonShape(String buttonName, int shapeNum){
-		if(buttonName.toLowerCase().equals("left")){
-			leftButton.resetButtonShape(shapeNum);
-		}
-		else if(buttonName.toLowerCase().equals("right")){
-			rightButton.resetButtonShape(shapeNum);
-		}
-		else if(buttonName.toLowerCase().equals("left2")){
-			leftButton2.resetButtonShape(shapeNum);
-		}
-		else if(buttonName.toLowerCase().equals("right2")){
-			rightButton2.resetButtonShape(shapeNum);
-		}
-		else{
-			System.out.println("Error with setButtonShape() method!  Incorrect button name used --> " + buttonName + ".  Try \"left\", \"right\", \"left2\", or \"right2\".");
+		AdventureButton sb = getButton(buttonName);
+		if(sb != null){
+			sb.setButtonShape(shapeNum);
 		}
 	}
+
+	/**
+	 * Changes the shape of ALL Buttons
+	 * @param shapeNum Determines the shape of the button:
+	 * 1 = Circle, 
+	 * 2 = UpTriangle, 
+	 * 3 = LeftTriangle, 
+	 * 4 = RightTriangle, 
+	 * 5 = Rectangle, 
+	 */
 	public void setButtonShape(int shapeNum){
 		setButtonShape("left", shapeNum);
 		setButtonShape("right", shapeNum);
@@ -451,34 +362,28 @@ public class Adventure{
 		}
 	}
 
-	// Change the size dimensions of each button (width and height).
-	// Use "right", "left", "right2" or "left2" for the button name
-	// The buttons actual width & height will not fill out to its maximum size unless the text needs it,
-	// but the right or left panels will automatically max space based on the max width
+	/**
+	 * Changes the size dimensions for a specific button
+	 * @param buttonName Use "right", "left", "right2" or "left2"
+	 * @param widthPixels maximum width of the button
+	 * 					(Panel will automatically adjust, 
+	 * 					but button will only expand to max width if needed.)
+	 * @param heightPixels height of button 
+	 */
 	public void setButtonSize(String buttonName, int widthPixels, int heightPixels){
-
-		if(buttonName.toLowerCase().equals("left")){
-			// this.leftButton.setPreferredSize(new Dimension(widthPixels, heightPixels));
-			System.out.println("Set size to " + widthPixels + "," + heightPixels);
-			leftButton.setButtonSize(widthPixels, heightPixels);
-			System.out.println("Updated ShapeButton class button size to...");
-		} 
-		else if(buttonName.toLowerCase().equals("right")){
-			// this.rightButton.setPreferredSize(new Dimension(widthPixels, heightPixels));
-			rightButton.setButtonSize(widthPixels, heightPixels);
-		} 
-		else if(buttonName.toLowerCase().equals("left2")){
-			// this.leftButton2.setPreferredSize(new Dimension(widthPixels, heightPixels));
-			leftButton2.setButtonSize(widthPixels, heightPixels);
-		} 
-		else if(buttonName.toLowerCase().equals("right2")){
-			// this.rightButton2.setPreferredSize(new Dimension(widthPixels, heightPixels));
-			rightButton2.setButtonSize(widthPixels, heightPixels);
-		}
-		else{
-			System.out.println("Error with setButtonResize() method!  Incorrect button name used --> " + buttonName + ".  Try \"left\", \"right\", \"left2\", or \"right2\".");
+		AdventureButton sb = getButton(buttonName);
+		if(sb != null){
+			sb.setButtonSize(widthPixels, heightPixels);
 		}
 	}
+
+	/**
+	 * Changes the size dimensions for ALL buttons
+	 * @param widthPixels maximum width of the button
+	 * 					(Panel will automatically adjust, 
+	 * 					but button will only expand to max width if needed.)
+	 * @param heightPixels height of button 
+	 */
 	public void setButtonSize(int widthPixels, int heightPixels){
 		setButtonSize("left", widthPixels, heightPixels);
 		setButtonSize("right", widthPixels, heightPixels);
@@ -487,38 +392,145 @@ public class Adventure{
 			setButtonSize("right2", widthPixels, heightPixels);
 		}
 	}
+	
+	/**
+	 * Changes the text wording on a specific button
+	 * @param buttonName Use "right", "left", "right2" or "left2"
+	 * @param newText the text to display on the button
+	 */
+	public void setButtonText(String buttonName, String newText){
+		AdventureButton sb = getButton(buttonName);
+		if(sb != null){
+			sb.setButtonText(newText);
+		}
+	}
 
-	//Place a new String in the Adventure Status bar
+	/**
+	 * Changes the background color filled in for a specific button
+	 * @param buttonName Use "right", "left", "right2" or "left2"
+	 * @param color the desired color from Java's Color class 
+	 * 				(ie. <code>Color.BLACK</code> or <code>new Color(255,0,0)</code>)
+	 */
+	public void setButtonColor(String buttonName, Color color){
+		AdventureButton sb = getButton(buttonName);
+		if(sb != null){
+			sb.setBackground(color);
+		}
+	}
+	
+	/**
+	 * Changes the background color filled in for ALL buttons
+	 * @param color the desired color from Java's Color class 
+	 * 				(ie. <code>Color.BLACK</code> or <code>new Color(255,0,0)</code>)
+	 */
+	public void setButtonColor(Color color){
+		setButtonColor("left", color);
+		setButtonColor("right", color);
+		if(numButtons == 4){
+			setButtonColor("left2", color);
+			setButtonColor("right2", color);	
+		}
+	}
+
+	/**
+	 * Changes the font style for a specific button
+	 * @param buttonName Use "right", "left", "right2" or "left2"
+	 * @param font the desired front from the Java Font class 
+	 * 				https://docs.oracle.com/javase/7/docs/api/java/awt/Font.html
+	 * 				(ie. <code>new Font("Arial", Font.PLAIN, 25)</code>)
+	 */
+	public void setButtonFont(String buttonName, Font font){
+		AdventureButton sb = getButton(buttonName);
+		if(sb != null){
+			sb.setFont(font);
+		}
+	}
+
+	/**
+	 * Changes the font style for ALL buttons
+	 * @param font the desired front from the Java Font class 
+	 * 				https://docs.oracle.com/javase/7/docs/api/java/awt/Font.html
+	 * 				(ie. <code>new Font("Arial", Font.PLAIN, 25)</code>)
+	 */
+	public void setButtonFont(Font font){
+		setButtonFont("left", font);
+		setButtonFont("right", font);
+		if(numButtons == 4){
+			setButtonFont("left2", font);
+			setButtonFont("right2", font);
+		}
+	}
+
+	/**
+	 * Changes the text color for a specific button
+	 * @param buttonName Use "right", "left", "right2" or "left2"
+	 * @param textColor the desired color from Java's Color class 
+	 * 				(ie. <code>Color.BLACK</code> or <code>new Color(255,0,0)</code>)
+	 */
+	public void setButtonTextColor(String buttonName, Color textColor){
+		AdventureButton sb = getButton(buttonName);
+		if(sb != null){
+			sb.setButtonTextColor(textColor);
+		}
+	}
+
+	/**
+	 * Changes the text color for ALL buttons
+	 * @param textColor the desired color from Java's Color class 
+	 * 				(ie. <code>Color.BLACK</code> or <code>new Color(255,0,0)</code>)
+	 */
+	public void setButtonTextColor(Color textColor){
+		setButtonTextColor("left", textColor);
+		setButtonTextColor("right", textColor);
+		if(numButtons == 4){
+			setButtonTextColor("left2", textColor);
+			setButtonTextColor("right2", textColor);	
+		}
+	}
+
+	/**
+	 * Places a new String in the Adventure Status bar
+	 * @param statusText complete String to be displayed at bottom of Adventure screen
+	 */
 	public void setStatusBar(String statusText){
 		bottomStatusBar.setText(statusText);
 	}
 
-	//Erase the entire Adventure Status Bar text
+	/**
+	 * Erases the entire Adventure Status Bar text
+	 */
 	public void clearStatusBar(){
 		bottomStatusBar.setText("");
 	}
 
-	//Generates a pop-up Question for the Adventurer
-	//return:
-	//	A String with the Adventurer's answer 
-	//Hint: Use new line escape characters (\n) in your String
-	// if it is too long to fit neatly into the box.
+	/**
+	 * Generates a pop-up Question for the Adventurer
+	 * @param questionText String prompt for the user
+	 * 						(Hint: Use new line escape characters (\n) in your String
+	 * 						if it is too long to fit neatly into the box.)
+	 * @return a String with the Adventurer's answer 
+	 */ 
 	public String popupQuestion(String questionText){
 		return JOptionPane.showInputDialog(f, questionText, "Make your choice!", JOptionPane.PLAIN_MESSAGE);
 	}
 
-	//Generates a pop-up message... The Adventurer cannot type into a
-	//Hint: Use new line escape characters (\n) in your String
-	// if it is too long to fit neatly into the box.
+	/**
+	 * Generates a pop-up message... The Adventurer cannot type into a
+	 * @param questionText String prompt for the user
+	 * 						(Hint: Use new line escape characters (\n) in your String
+	 * 						if it is too long to fit neatly into the box.
+	 */
 	public void popupMessage(String messageText){
 		JOptionPane.showMessageDialog(f, messageText, "Important message!", JOptionPane.PLAIN_MESSAGE);
 	}
 
-		/*-------------------------------------------------------*/
-		/*----- HELPER METHODS ----------------------------------*/
-		/*-------------------------------------------------------*/
+	/*-------------------------------------------------------*/
+	/*----- HELPER METHODS ----------------------------------*/
+	/*-------------------------------------------------------*/
 
-	//Pause the Adventure while waiting for a Button to be Pushed
+	/**
+	 * Pauses the Adventure while waiting for a Button to be Pushed
+	 */
 	public void waitForButtonPush(){
 		lastButtonPushed = "NONE";	//reset the Button choice to "NONE"
 		while(true){
@@ -532,7 +544,9 @@ public class Adventure{
 		}
 	}
 
-	//Pause the Java processor for a certain amount of time
+	/**
+	 * Pauses the Java processor for a certain amount of time
+	 */
 	public static void pause(final int milliseconds) {
 		try {
 			Thread.sleep(milliseconds);
@@ -541,13 +555,62 @@ public class Adventure{
 		}
 	}
 
+	/**
+	 * Closes the Adventure screen window and ends Java process
+	 */
+	public void closeAdventure(){
+		f.dispose();
+	}
+
+	/** [PRIVATE METHOD]
+	 * Records the last button pushed and total number of pushes
+	 * @param buttonInitial the button just pushed
+	 */
 	private void recordButtonPush(String buttonInitial){
 		lastButtonPushed = buttonInitial;
 		totalButtonPushes++;
 	}
 
-	public void closeAdventure(){
-		f.dispose();
+	/** [PRIVATE METHOD]
+	 * Converts a Java Color object into an HTML color String
+	 * @param color Java Color object
+	 * @return HTML hex color String
+	 */
+	private String getHtmlColorString(Color color) {
+		String red = Integer.toHexString(color.getRed());
+		String green = Integer.toHexString(color.getGreen());
+		String blue = Integer.toHexString(color.getBlue());
+
+		return "#" + 
+			(red.length() == 1? "0" + red : red) +
+			(green.length() == 1? "0" + green : green) +
+			(blue.length() == 1? "0" + blue : blue);	
+	}
+
+	/** [PRIVATE METHOD] 
+	 * Returns a specific ShapeButton object based on a String input
+	 * Checks for errors in the String for a button
+	 */
+	private AdventureButton getButton(String buttonName){
+		AdventureButton sb = null;
+		buttonName = buttonName.toLowerCase();
+		if(buttonName.equals("left")){
+			sb = leftButton;
+		}
+		else if(buttonName.equals("right")){
+			sb = rightButton;
+		}
+		else if(buttonName.equals("left2")){
+			sb = leftButton2;
+		}
+		else if(buttonName.equals("right2")){
+			sb = rightButton2;
+		}
+		else{
+			sb = null;
+			System.out.println("Error with a button naming method!  Incorrect button name used --> " + buttonName + ".  Try \"left\", \"right\", \"left2\", or \"right2\".");
+		}
+		return sb;
 	}
 
 

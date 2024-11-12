@@ -157,8 +157,7 @@ public class Main {
 
 		//CUSTOMIZE YOUR BUTTONS
 		a.setButtonColor(Color.GREEN);
-		// a.setButtonColor("left", Color.BROWN);
-		// a.setButtonColor("right", Color.BROWN);
+		// a.setButtonColor("left", Color.MAGENTA);
 
 		//Change the shapes of the buttons: 1 = Circle, 2 = UpTriangle, 3 = LeftTriangle, 4 = RightTriangle, 5 = Rectangle 
 		// a.setButtonShape(1); //sets ALL buttons to be circles
@@ -178,7 +177,9 @@ public class Main {
 		//change button text font
 		a.setButtonFont("left", new Font("Arial", Font.PLAIN, 25));
 
-
+		//change button's text color
+		a.setButtonTextColor(Color.DARK_GRAY);
+		
 		System.out.println("moreAdventureSetup() complete");
 	} //closes the moreAdventure() method
 
