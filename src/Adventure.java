@@ -7,8 +7,8 @@ import java.awt.*;
  * Designed for usage after Unit 4 of the AP Computer Science A curriculum
  * Topics to emphasize include: String methods, if-else structures, using Java methods with parameters & returns, loops
  * @author Joel Bianchi
- * @version 11/12/2024
- * Latest Update: Javadocs added
+ * @version 11/26/2024
+ * Latest Update: 2 new constructors
  */
 public class Adventure{
 
@@ -59,9 +59,26 @@ public class Adventure{
 	public Adventure(){
 		this(800, 600, 2);
 	}
+	
+	/**
+	 * Adventure Class Constructor #2: Choose screen size with 2 buttons
+	 * @param widthPixels how many pixels wide (x-axis) the screen should be
+	 * @param heightPixels how many pixels high (y-axis) the screen should be
+	 */
+	public Adventure(int widthPixels, int heightPixels){
+		this(widthPixels, heightPixels, 2);
+	}
+	
+	/**
+	 * Adventure Class Constructor #3: Choose 4 buttons with default resolution
+	 * @param numButtons choose 2 or 4 buttons for the Adventure
+	 */
+	public Adventure(int numButtons){
+		this(800, 600, numButtons);
+	}
 
 	/**
-	 * Adventure Class Constructor #2: 
+	 * Adventure Class Constructor #4: 
 	 * @param widthPixels how many pixels wide (x-axis) the screen should be
 	 * @param heightPixels how many pixels high (y-axis) the screen should be
 	 * @param numButtons choose 2 or 4 buttons for the Adventure
