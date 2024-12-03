@@ -169,7 +169,7 @@ public class Main {
 		//a.setButtonText("left","LEFT BUTTON");
 
 		//Change the sizes of the buttons
-		a.setButtonSize(200,250);	//sets button size for ALL buttons
+		a.setButtonSize(200,300);	//sets button size for ALL buttons
 		// a.setButtonSize("left", 250,250);
 		// a.setButtonSize("right", 100,300);
 

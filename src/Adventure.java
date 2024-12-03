@@ -7,8 +7,8 @@ import java.awt.*;
  * Designed for usage after Unit 4 of the AP Computer Science A curriculum
  * Topics to emphasize include: String methods, if-else structures, using Java methods with parameters & returns, loops
  * @author Joel Bianchi
- * @version 11/26/2024
- * Latest Update: 2 new constructors
+ * @version 11/28/2024
+ * Latest Update: Support for deprecated methods
  */
 public class Adventure{
 
@@ -628,6 +628,71 @@ public class Adventure{
 			System.out.println("Error with a button naming method!  Incorrect button name used --> " + buttonName + ".  Try \"left\", \"right\", \"left2\", or \"right2\".");
 		}
 		return sb;
+	}
+
+	/*-------------------------------------------------------*/
+	/*----- DEPRECATED METHODS - DO NOT USE -----------------*/
+	/*-------------------------------------------------------*/
+
+	public void setLeftButtonText(String newText){
+		setButtonText("LEFT", newText);
+	}
+	public void setRightButtonText(String newText){
+		setButtonText("RIGHT", newText);
+	}
+	public void setLeftButtonText2(String newText){
+		setButtonText("LEFT2", newText);
+	}
+	public void setRightButtonText2(String newText){
+		setButtonText("RIGHT2", newText);
+	}
+	public void setLeftButtonColor(Color color){
+		setButtonColor("LEFT", color);
+	}
+	public void setRightButtonColor(Color color){
+		setButtonColor("RIGHT", color);
+	}
+	public void setLeftButtonColor2(Color color){
+		setButtonColor("LEFT2", color);
+	}
+	public void setRightButtonColor2(Color color){
+		setButtonColor("RIGHT2", color);
+	}
+	public void setLeftButtonShape(int shapeNum){
+		setButtonShape("LEFT", shapeNum);
+	}
+	public void setRightButtonShape(int shapeNum){
+		setButtonShape("RIGHT", shapeNum);
+	}
+	public void setLeftButtonShape2(int shapeNum){
+		setButtonShape("LEFT2", shapeNum);
+	}
+	public void setRightButtonShape2(int shapeNum){
+		setButtonShape("RIGHT2", shapeNum);
+	}
+	public void setLeftButtonSize(int w, int h){
+		setButtonSize("LEFT", w, h);
+	}
+	public void setRightButtonSize(int w, int h){
+		setButtonSize("RIGHT", w, h);
+	}
+	public void setLeftButtonSize2(int w, int h){
+		setButtonSize("LEFT2", w, h);
+	}
+	public void setRightButtonSize2(int w, int h){
+		setButtonSize("RIGHT2", w, h);
+	}
+	public void setLeftButtonFont(Font f){
+		setButtonFont("LEFT", f);
+	}
+	public void setRightButtonFont(Font f){
+		setButtonFont("RIGHT", f);
+	}
+	public void setLeftButtonFont2(Font f){
+		setButtonFont("LEFT2", f);
+	}
+	public void setRightButtonFont2(Font f){
+		setButtonFont("RIGHT2", f);
 	}
 
 
