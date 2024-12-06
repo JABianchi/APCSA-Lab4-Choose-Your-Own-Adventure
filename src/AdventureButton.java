@@ -7,7 +7,7 @@ import java.awt.geom.*;
  * Builds off of JButtons, adding Cirucular and Polygonal shaped buttons
  * Remix from harryjoy's 8/21/2011 code: https://harryjoy.me/2011/08/21/different-button-shapes-in-swing/
  * @author Joel Bianchi
- * @version 11/12/2024
+ * @version 12/6/2024
  */
 public class AdventureButton extends JButton {
 
@@ -222,6 +222,21 @@ public class AdventureButton extends JButton {
 			yPoints[3] = 0;
 		}
 
+	}
+
+	/** 
+	 * Accessor method that overrides superclass getWidth() method
+	 * @return user-described width of the button
+	 */
+	public int getWidth(){
+		return this.buttonWidth;
+	}
+    /** 
+	 * Accessor method that overrides superclass getWidth() method
+	 * @return user-described height of the button
+	 */
+	public int getHeight(){
+		return this.buttonHeight;
 	}
 
 	/** [PROTECTED]
