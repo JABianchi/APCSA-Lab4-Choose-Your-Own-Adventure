@@ -8,7 +8,7 @@ import java.awt.Font;
  * See the (#) indicating which Milestone each part of code needs to be completed by.
  * @author _____________________ (2)
  * @version ____________________ (2)
- * Starter Code Date: 11/12/2024
+ * Starter Code Date: 12/6/2024
  */
 public class Main {
 
@@ -169,9 +169,9 @@ public class Main {
 		//a.setButtonText("left","LEFT BUTTON");
 
 		//Change the sizes of the buttons
-		a.setButtonSize(200,300);	//sets button size for ALL buttons
-		// a.setButtonSize("left", 250,250);
-		// a.setButtonSize("right", 100,300);
+		a.setButtonSize(200,200);	//sets button size for ALL buttons
+		// a.setButtonSize("left", 200,400);
+		// a.setButtonSize("right", 200,400);
 
 		//change button text font
 		a.setButtonFont("left", new Font("Arial", Font.PLAIN, 25));

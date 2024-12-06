@@ -7,7 +7,7 @@ import java.awt.*;
  * Designed for usage after Unit 4 of the AP Computer Science A curriculum
  * Topics to emphasize include: String methods, if-else structures, using Java methods with parameters & returns, loops
  * @author Joel Bianchi
- * @version 11/28/2024
+ * @version 12/6/2024-3
  * Latest Update: Support for deprecated methods
  */
 public class Adventure{
@@ -56,6 +56,7 @@ public class Adventure{
 	/**
 	 * Adventure Class Constructor #1: Default
 	 */
+
 	public Adventure(){
 		this(800, 600, 2);
 	}
@@ -124,6 +125,7 @@ public class Adventure{
 		//int bCenterHeight = fHeight/2; 
 
 		leftPanel = new JPanel();
+        leftPanel.add(Box.createVerticalStrut(5));
 		leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
 		leftButton = new AdventureButton(leftButtonText, 1, bWidth, bHeight);
 		leftButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -131,6 +133,7 @@ public class Adventure{
 		leftPanel.add(leftButton);
 
 		rightPanel = new JPanel();
+		rightPanel.add(Box.createVerticalStrut(5));
 		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
 		rightButton = new AdventureButton(rightButtonText, 1, bWidth, bHeight);
 		rightButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -138,14 +141,17 @@ public class Adventure{
 		rightPanel.add(rightButton);
 
 		if(numButtons == 4){
+			leftPanel.add(Box.createVerticalStrut(10));
+			rightPanel.add(Box.createVerticalStrut(10));
+
 			leftButton2 = new AdventureButton(leftButtonText2, 1, bWidth, bHeight);
 			leftButton2.setAlignmentX(Component.CENTER_ALIGNMENT);
-			leftButton2.setAlignmentY(Component.CENTER_ALIGNMENT);
+			leftButton2.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 			leftPanel.add(leftButton2);
 
 			rightButton2 = new AdventureButton(rightButtonText2, 1, bWidth, bHeight);
 			rightButton2.setAlignmentX(Component.CENTER_ALIGNMENT);
-			rightButton2.setAlignmentY(Component.CENTER_ALIGNMENT);
+			rightButton2.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 			rightPanel.add(rightButton2);
 		}
 
@@ -354,6 +360,8 @@ public class Adventure{
 		if(sb != null){
 			sb.setButtonText(newText);
 		}
+		leftPanel.repaint();
+        rightPanel.repaint();
 	}
 	
 	/**

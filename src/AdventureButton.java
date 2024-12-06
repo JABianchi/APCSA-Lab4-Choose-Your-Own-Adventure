@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+
 import java.awt.*;
 import java.awt.geom.*;
 
@@ -7,7 +9,7 @@ import java.awt.geom.*;
  * Builds off of JButtons, adding Cirucular and Polygonal shaped buttons
  * Remix from harryjoy's 8/21/2011 code: https://harryjoy.me/2011/08/21/different-button-shapes-in-swing/
  * @author Joel Bianchi
- * @version 12/6/2024
+ * @version 12/6/2024-3
  */
 public class AdventureButton extends JButton {
 
@@ -24,7 +26,7 @@ public class AdventureButton extends JButton {
 
 
 	/**
-	 * ShapeButton Class Constructor #1 - uses default sizes of 150x150 for button
+	 * AdventureButton Class Constructor #1 - uses default sizes of 150x150 for button
 	 * @param buttonText what text should display inside the button
 	 * @param shapeType the type of shape for the button:
 	 * 		1 = circle, 
@@ -38,7 +40,7 @@ public class AdventureButton extends JButton {
 	}
 
 	/**
-	 * ShapeButton Class Constructor #2 - set button size
+	 * AdventureButton Class Constructor #2 - set button size
 	 * @param buttonText what text should display inside the button
 	 * @param shapeType the type of shape for the button:
 	 * 		1 = circle, 
@@ -54,7 +56,7 @@ public class AdventureButton extends JButton {
 	}
 
 	/**
-	 * ShapeButton Class Constructor #3 - full constructor with colors
+	 * AdventureButton Class Constructor #3 - full constructor with colors
 	 * @param buttonText what text should display inside the button
 	 * @param shapeType the type of shape for the button:
 	 * 		1 = circle, 
@@ -76,6 +78,7 @@ public class AdventureButton extends JButton {
 		setButtonText(buttonText);
 		setContentAreaFilled(false);
 		arraySetup();
+		setBorder(new LineBorder(Color.BLACK));
 	}
 
 	/**
@@ -146,6 +149,8 @@ public class AdventureButton extends JButton {
 
 		//set size in jButton superclass vars
 		setPreferredSize(new Dimension(buttonWidth, buttonHeight));
+		setMinimumSize(new Dimension(buttonWidth, buttonHeight));
+		setMaximumSize(new Dimension(buttonWidth, buttonHeight));
 		System.out.println("Button WxH: " + buttonWidth + " x " + buttonHeight + "\t" + buttonText + "\t!");
 		
 		setContentAreaFilled(false);
