@@ -6,7 +6,7 @@ import javax.imageio.ImageIO;
 /**
  * Class to display resized pictures in a JFrame
  * @author Joel Bianchi
- * @version 11/12/2024
+ * @version 12/6/2024
  */
 public class PicCanvas extends Canvas {
 
@@ -56,6 +56,7 @@ public class PicCanvas extends Canvas {
 			g.drawImage(bImage, x_offset,y_offset,this);
 		} catch (IOException e) {
 			e.printStackTrace();
+            System.out.println("Bad File path = " + imgPath);
 		}
 	}
 	
