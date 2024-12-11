@@ -8,7 +8,7 @@ import java.awt.Font;
  * See the (#) indicating which Milestone each part of code needs to be completed by.
  * @author _____________________ (2)
  * @version ____________________ (2)
- * Starter Code Date: 12/6/2024
+ * Starter Code Date: 12/11/2024
  */
 public class Main {
 
@@ -178,6 +178,9 @@ public class Main {
 
 		//change button's text color
 		a.setButtonTextColor(Color.DARK_GRAY);
+
+        //change background colorbehind buttons & status bar
+        a.setBackgroundColor(Color.BLACK);
 		
 		System.out.println("moreAdventureSetup() complete");
 	} //closes the moreAdventure() method

@@ -7,8 +7,8 @@ import java.awt.*;
  * Designed for usage after Unit 4 of the AP Computer Science A curriculum
  * Topics to emphasize include: String methods, if-else structures, using Java methods with parameters & returns, loops
  * @author Joel Bianchi
- * @version 12/6/2024-3
- * Latest Update: Support for deprecated methods
+ * @version 12/11/2024
+ * Latest Update: Can change background color behind buttons & picture
  */
 public class Adventure{
 
@@ -527,6 +527,19 @@ public class Adventure{
 	public void clearStatusBar(){
 		bottomStatusBar.setText("");
 	}
+
+    /*
+     * Changes the background color behind the button panels and center picture panel -Thomas Dillon, 2024
+     * @param color the Color object to put in the background (ie. Color.BLACK)
+     */
+    public void setBackgroundColor(Color color){
+        rightPanel.setBackground(color);
+        rightPanel.repaint();
+        leftPanel.setBackground(color);
+        leftPanel.repaint();
+        centerPanel.setBackground(color);
+        centerPanel.repaint();
+    }
 
 	/**
 	 * Generates a pop-up Question for the Adventurer
